@@ -2,7 +2,7 @@
 
 Marketing site for Redstone Studios — a boutique AI transformation studio.
 
-Built with **Vite + React + Tailwind CSS + Framer Motion**. Four pages (Home, Services, About, Contact) with parallax hero, animated blueprint, scroll-triggered reveals, animated counters, page transitions, a scroll-progress bar, and a custom cursor.
+Built with **Vite + React + Tailwind CSS + Framer Motion**. Four pages (Home, Services, About, Contact) with an editorial, magazine-grade aesthetic: kinetic masked headlines that rise into place, a parallax blueprint hero, asymmetric sticky-column layouts, hairline-ruled index grids, animated metric counters, a parallax founder portrait, case-study outcome rows, refined page transitions, a scroll-progress bar, and a custom cursor. Design language: deep charcoal, warm copper accent, Fraunces serif display over Outfit body.
 
 ---
 
