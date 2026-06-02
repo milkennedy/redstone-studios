@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Clock, Mail, MapPin } from 'lucide-react'
 import { Kicker, Reveal, RevealHeading, CAL } from '../components/ui.jsx'
 
-const FORM_ENDPOINT = '' // paste Formspree endpoint, e.g. https://formspree.io/f/abcdwxyz
+const FORM_ENDPOINT = 'https://formspree.io/f/xrednkrv'
 
 export default function Contact() {
   const [status, setStatus] = useState('idle')
