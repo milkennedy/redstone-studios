@@ -4,27 +4,35 @@ export default {
   theme: {
     extend: {
       colors: {
-        ink:    '#14110f',
-        ink2:   '#1b1815',
-        ink3:   '#23201c',
-        ink4:   '#2c2823',
-        stone:  '#3a322c',
-        stoneLt:'#4a4039',
-        copper: '#b5673c',
-        copperLt: '#d59873',
-        copperDk: '#8f4f2d',
-        cream:  '#f3ead9',
-        cream2: '#e6dcc9',
-        muted:  '#b3a797',
-        muted2: '#8a7e70',
+        // Deep charcoal — primary / dark sections / text on light
+        ink:    '#111315',
+        ink2:   '#171a1d',
+        ink3:   '#1f2429',
+        // Off-white — primary light surface
+        paper:  '#F7F6F2',
+        paper2: '#efece4',
+        paper3: '#e6e2d8',
+        // Hairlines
+        line:   '#e1ddd2',
+        lineDk: '#2b3035',
+        // Accents — used sparingly
+        forest:   '#2E5E4E',
+        forestDk: '#244c3f',
+        forestLt: '#3c7563',
+        copper:   '#B26E3A',
+        river:    '#355C7D',
+        // Text
+        muted:    '#5b635f',  // on light
+        muted2:   '#8a918c',  // on light, lighter
+        paperMut: '#b7bcb6',  // on dark
       },
       fontFamily: {
-        display: ['Fraunces', 'Georgia', 'serif'],
-        body: ['Outfit', 'sans-serif'],
+        sans: ['Inter', 'system-ui', 'sans-serif'],
+        mono: ['"IBM Plex Mono"', 'ui-monospace', 'monospace'],
       },
-      maxWidth: { content: '1280px', prose: '680px' },
+      maxWidth: { content: '1200px', prose: '660px' },
       transitionTimingFunction: {
-        smooth: 'cubic-bezier(0.2, 0.7, 0.3, 1)',
+        smooth: 'cubic-bezier(0.22, 0.61, 0.36, 1)',
       },
     },
   },

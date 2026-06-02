@@ -3,47 +3,48 @@ import { Logo, CAL } from './ui.jsx'
 
 export default function Footer() {
   return (
-    <footer className="border-t border-stone bg-ink2">
+    <footer className="bg-ink text-paper">
       {/* CTA strip */}
       <div className="mx-auto max-w-content px-6 py-20 md:px-10">
         <div className="flex flex-col items-start justify-between gap-8 md:flex-row md:items-end">
-          <h2 className="t-h2 max-w-2xl font-display text-cream">Let's build your AI-native organization — together.</h2>
-          <a href={CAL} target="_blank" rel="noopener noreferrer" className="group inline-flex shrink-0 items-center gap-2.5 rounded-sm bg-copper px-7 py-4 text-[0.9rem] font-medium tracking-wide text-white transition-all duration-300 ease-smooth hover:bg-copperLt">
-            Book an AI Transformation Call
+          <h2 className="t-h2 max-w-2xl text-paper">Let's build what's next — together.</h2>
+          <a href={CAL} target="_blank" rel="noopener noreferrer" className="group inline-flex shrink-0 items-center gap-2 rounded-md bg-forest px-6 py-3.5 text-[0.95rem] font-medium text-paper transition-colors duration-300 ease-smooth hover:bg-forestLt">
+            Work With Us
             <span className="transition-transform duration-300 ease-smooth group-hover:translate-x-1">→</span>
           </a>
         </div>
       </div>
 
-      <div className="hairline mx-auto max-w-content" />
+      <div className="mx-auto h-px max-w-content bg-lineDk" />
 
       <div className="mx-auto max-w-content px-6 py-14 md:px-10">
         <div className="grid grid-cols-1 gap-12 md:grid-cols-[2fr_1fr_1fr]">
           <div>
-            <Link to="/" className="flex items-center gap-3 font-display text-[1.25rem] text-cream">
-              <Logo className="h-7 w-7" />
-              <span>Mike <span className="text-copperLt">Kennedy</span></span>
+            <Link to="/" className="flex items-center gap-2.5 text-[1.05rem] font-semibold tracking-tight text-paper">
+              <Logo className="h-7 w-7 text-forestLt" />
+              <span>Redstone Studios</span>
             </Link>
-            <p className="mt-5 max-w-sm text-[0.95rem] leading-relaxed text-muted">
-              AI transformation advisor to executive teams. I work at the intersection of organizational strategy and applied AI implementation — closing the gap between AI investment and AI value.
+            <p className="mt-5 max-w-sm text-[0.95rem] leading-relaxed text-paperMut">
+              An applied AI innovation studio founded by Mike Kennedy, PhD. We combine science, data, AI and entrepreneurship to solve some of Canada's most important challenges.
             </p>
+            <div className="label mt-6 text-forestLt">People · Planet · Profit</div>
           </div>
           <div>
-            <h4 className="mb-5 font-body text-[0.72rem] font-medium uppercase tracking-[0.22em] text-muted2">Navigate</h4>
-            {[['Home', '/'], ['Services', '/services'], ['About', '/about'], ['Contact', '/contact']].map(([t, to]) => (
-              <Link key={to} to={to} className="mb-3 block w-fit text-[0.95rem] text-muted transition-colors hover:text-copperLt">{t}</Link>
+            <h4 className="label mb-5 text-paperMut">Navigate</h4>
+            {[['Home', '/'], ['Projects', '/projects'], ['About', '/about'], ['Contact', '/contact']].map(([t, to]) => (
+              <Link key={to} to={to} className="mb-3 block w-fit text-[0.95rem] text-paperMut transition-colors hover:text-paper">{t}</Link>
             ))}
           </div>
           <div>
-            <h4 className="mb-5 font-body text-[0.72rem] font-medium uppercase tracking-[0.22em] text-muted2">Get Started</h4>
-            <a href={CAL} target="_blank" rel="noopener noreferrer" className="mb-3 block w-fit text-[0.95rem] text-muted transition-colors hover:text-copperLt">Book a Call</a>
-            <Link to="/services" className="mb-3 block w-fit text-[0.95rem] text-muted transition-colors hover:text-copperLt">View Services</Link>
-            <Link to="/contact" className="mb-3 block w-fit text-[0.95rem] text-muted transition-colors hover:text-copperLt">Discuss Requirements</Link>
+            <h4 className="label mb-5 text-paperMut">Engage</h4>
+            <a href={CAL} target="_blank" rel="noopener noreferrer" className="mb-3 block w-fit text-[0.95rem] text-paperMut transition-colors hover:text-paper">Work With Us</a>
+            <Link to="/projects" className="mb-3 block w-fit text-[0.95rem] text-paperMut transition-colors hover:text-paper">View Projects</Link>
+            <Link to="/about" className="mb-3 block w-fit text-[0.95rem] text-paperMut transition-colors hover:text-paper">About Mike</Link>
           </div>
         </div>
-        <div className="mt-14 flex flex-wrap justify-between gap-4 border-t border-stone/60 pt-7 text-[0.8rem] text-muted2">
-          <span>© {new Date().getFullYear()} Mike Kennedy. All rights reserved.</span>
-          <span>Mike Kennedy, PhD · Canada</span>
+        <div className="mt-14 flex flex-wrap justify-between gap-4 border-t border-lineDk pt-7 text-[0.82rem] text-paperMut">
+          <span>© {new Date().getFullYear()} Redstone Studios. All rights reserved.</span>
+          <span>Founded by Mike Kennedy, PhD · Canada</span>
         </div>
       </div>
     </footer>

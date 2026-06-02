@@ -1,130 +1,130 @@
-import { useRef } from 'react'
-import { motion, useScroll, useTransform } from 'framer-motion'
-import { Kicker, Reveal, RevealHeading } from '../components/ui.jsx'
+import { PrimaryCTA, Eyebrow, Reveal, Topo } from '../components/ui.jsx'
 import mike from '../assets/mike.jpg'
 
-const industries = [
-  ['Housing & Construction', 'Automate estimating, proposal generation, project reporting, and compliance documentation to accelerate project delivery.'],
-  ['Mining & Natural Resources', 'Streamline regulatory reporting, environmental compliance, field data collection, and operational intelligence across remote sites.'],
-  ['Forestry', 'Apply AI to harvest planning, environmental monitoring, regulatory submissions, and community engagement documentation.'],
-  ['Agriculture & Food', 'Deploy AI workflows for production planning, compliance reporting, supply chain analysis, and market intelligence.'],
-  ['Utilities', 'Redesign operational reporting, customer communication, regulatory compliance, and asset management workflows.'],
-  ['Indigenous Economic Development', 'Support Nation-led enterprises with AI tools for grant writing, project management, and land stewardship documentation.'],
-  ['Government & Crown Corporations', 'Improve policy analysis, public communications, program reporting, and procurement workflows.'],
-  ['Professional Services', 'Redesign how knowledge work gets done — from client deliverables to internal operations — to increase output per professional.'],
+const roles = ['Founder & CEO', 'Environmental Economist', 'AI Researcher', 'Housing Innovator', 'Natural Capital Strategist', 'University Researcher', 'Product Builder']
+
+const nodes = [
+  ['UBC', 'University research base in environmental and resource economics.', 'river'],
+  ['Green Analytics', 'Founded — environmental economics and natural capital advisory.', 'forest'],
+  ['Green Metrics', 'Founded — measurement and data for sustainability performance.', 'forest'],
+  ['Open Housing Canada', 'Founded — housing innovation and supply systems.', 'copper'],
+  ['Precision Livestock Diagnostics', 'Founded — AI diagnostics for animal agriculture.', 'copper'],
+  ['Wolastoqey Forest Partnership', 'Strategic partner — Indigenous-led forest stewardship.', 'forest'],
+]
+const dot = { forest: 'bg-forest', river: 'bg-river', copper: 'bg-copper' }
+const stroke = { forest: '#2E5E4E', river: '#355C7D', copper: '#B26E3A' }
+
+// hexagon node coordinates around centre (500,280)
+const pos = [
+  [500, 86], [792, 188], [792, 372], [500, 474], [208, 372], [208, 188],
 ]
 
-const outcomes = [
-  ['Construction Company', 'A mid-sized construction firm was spending 40+ hours per proposal on formatting, scope writing, and compliance documentation.', 'Redesigned the proposal workflow using an AI-assisted knowledge base, template system, and review process.', 'Proposal preparation time reduced by approximately 60%, freeing senior estimators to focus on client relationships and pricing strategy.', '~60%', 'less time per proposal'],
-  ['Natural Resource Company', 'A resource organization was managing regulatory compliance manually across multiple sites and permit categories.', 'Automated compliance reporting workflows connected field data collection to structured regulatory submissions.', 'Compliance reporting time reduced significantly, with fewer errors and faster regulatory response cycles.', 'Faster', 'regulatory response cycles'],
-  ['Non-Profit Organization', 'A non-profit was under-resourced for grant writing and program reporting, limiting its ability to pursue new funding.', 'Implemented AI-assisted grant writing workflows and structured program reporting templates tied to outcome data.', 'Grant application output increased substantially with the same team, improving quality and capacity to pursue diverse funding.', 'More', 'grant output, same team'],
-]
-
-function FounderFeature() {
-  const ref = useRef(null)
-  const { scrollYProgress } = useScroll({ target: ref, offset: ['start end', 'end start'] })
-  const y = useTransform(scrollYProgress, [0, 1], ['-8%', '8%'])
+function PageHero() {
   return (
-    <section className="px-6 py-16 md:px-10 md:py-24">
-      <div className="mx-auto grid max-w-content grid-cols-1 gap-14 lg:grid-cols-[0.92fr_1.08fr] lg:gap-20">
-        <div ref={ref} className="lg:sticky lg:top-28 lg:self-start">
-          <div className="relative overflow-hidden rounded-sm border border-stone">
-            <div className="aspect-[4/4.7] overflow-hidden">
-              <motion.img src={mike} alt="Mike Kennedy, PhD — AI Transformation Advisor" style={{ y, scale: 1.12 }} className="h-full w-full object-cover object-[50%_18%]" />
-            </div>
-            <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink via-ink/70 to-transparent p-7 pt-20">
-              <h3 className="font-display text-[1.7rem] text-cream">Mike Kennedy, PhD</h3>
-              <div className="mt-1 text-[0.92rem] text-copperLt">AI Transformation Advisor</div>
-              <div className="mt-4 flex flex-wrap gap-2">
-                {['AI Strategist', 'Economist', 'Builder'].map((t) => (
-                  <span key={t} className="rounded-sm border border-copperLt/30 px-3 py-1.5 text-[0.65rem] uppercase tracking-[0.14em] text-copperLt">{t}</span>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div>
-          <Reveal><Kicker className="mb-7">Background</Kicker></Reveal>
-          <RevealHeading as="h2" text="A rare combination of rigor and execution" className="t-h2 font-display text-cream" />
-          <div className="mt-8 space-y-6 text-[1.08rem] leading-relaxed text-muted">
-            <Reveal delay={0.1}><p>Mike Kennedy, PhD is an AI strategist, environmental economist, entrepreneur, and applied technology builder with two decades of experience translating complex systems into practical tools that organizations can use.</p></Reveal>
-            <Reveal delay={0.15}><p>His work spans environmental and resource economics, precision agriculture, housing policy, and Indigenous forestry partnerships. He has founded and led organizations including <span className="text-cream2">Green Analytics</span>, <span className="text-cream2">Green Metrics</span>, <span className="text-cream2">BuildBlox</span>, <span className="text-cream2">Open Housing Canada</span>, and <span className="text-cream2">Precision Livestock Diagnostics</span> — and has served as a strategic partner in the Wolastoqey Forest Partnership.</p></Reveal>
-            <Reveal delay={0.2}><p>Mike brings doctoral-level analytical rigor and hands-on entrepreneurial execution to every client engagement. He works directly with executive teams to ensure that AI transformation is grounded in organizational reality — not vendor promises.</p></Reveal>
-          </div>
-          <Reveal delay={0.25}>
-            <blockquote className="mt-10 border-l-2 border-copper pl-6 font-display text-[1.3rem] italic leading-snug text-cream2">
-              "I keep a deliberately small client roster — so I'm directly involved in every engagement, start to finish."
-            </blockquote>
+    <header className="border-b border-line">
+      <div className="mx-auto grid max-w-content grid-cols-1 items-center gap-12 px-6 pb-16 pt-36 md:px-10 md:pb-20 md:pt-44 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16">
+        <div className="min-w-0">
+          <Reveal><Eyebrow className="mb-6">About</Eyebrow></Reveal>
+          <Reveal delay={0.05}><h1 className="t-hero text-balance text-ink">Mike Kennedy, PhD</h1></Reveal>
+          <Reveal delay={0.1}>
+            <p className="t-lead mt-6 max-w-prose text-muted">
+              A scientist, economist and entrepreneur applying AI to the systems that shape communities, economies and ecosystems.
+            </p>
           </Reveal>
-        </div>
-      </div>
-    </section>
-  )
-}
-
-function Industries() {
-  return (
-    <section className="border-y border-stone bg-ink2 px-6 py-20 md:px-10 md:py-24">
-      <div className="mx-auto max-w-content">
-        <div className="mb-12 max-w-3xl">
-          <Reveal><Kicker className="mb-7">Industries</Kicker></Reveal>
-          <RevealHeading as="h2" text="Built for organizations that do real work" className="t-h2 font-display text-cream" />
           <Reveal delay={0.15}>
-            <p className="mt-7 text-[1.05rem] leading-relaxed text-muted">I serve organizations operating in complex, regulated, and high-stakes environments. Every engagement is calibrated to the operational realities of the sector — not retrofitted from a generic playbook.</p>
+            <div className="mt-8 flex flex-wrap gap-2">
+              {roles.map((r) => (
+                <span key={r} className="rounded-full border border-line px-3.5 py-1.5 text-[0.8rem] font-medium text-muted">{r}</span>
+              ))}
+            </div>
           </Reveal>
         </div>
-        <div className="border-t border-stone/70">
-          {industries.map(([h, p], i) => (
-            <Reveal key={h} delay={(i % 2) * 0.06}>
-              <div className="group grid grid-cols-1 gap-2 border-b border-stone/70 py-7 transition-colors duration-300 hover:border-copper/50 md:grid-cols-[0.4fr_1fr] md:gap-12">
-                <h4 className="font-display text-[1.35rem] text-cream transition-colors group-hover:text-copperLt">{h}</h4>
-                <p className="max-w-2xl text-[0.98rem] leading-relaxed text-muted">{p}</p>
-              </div>
-            </Reveal>
-          ))}
-        </div>
+        <Reveal delay={0.12} className="lg:justify-self-end">
+          <div className="overflow-hidden rounded-lg border border-line">
+            <img src={mike} alt="Mike Kennedy, PhD — Founder, Redstone Studios" className="aspect-[4/4.6] w-full max-w-[400px] object-cover object-[50%_16%] grayscale-[0.85]" />
+          </div>
+        </Reveal>
       </div>
-    </section>
+    </header>
   )
 }
 
-function Outcomes() {
+function Bio() {
   return (
     <section className="px-6 py-20 md:px-10 md:py-24">
-      <div className="mx-auto max-w-content">
-        <div className="mb-12 max-w-3xl">
-          <Reveal><Kicker className="mb-7">Example Outcomes</Kicker></Reveal>
-          <RevealHeading as="h2" text="What AI transformation looks like in practice" className="t-h2 font-display text-cream" />
-          <Reveal delay={0.15}>
-            <p className="mt-7 text-[1.05rem] leading-relaxed text-muted">Illustrative examples of the types of outcomes organizations have achieved through structured AI workflow transformation. These are representative scenarios, not client-specific claims or guarantees of results.</p>
-          </Reveal>
+      <div className="mx-auto grid max-w-content grid-cols-1 gap-12 lg:grid-cols-[0.4fr_1.6fr] lg:gap-16">
+        <Reveal><Eyebrow>Background</Eyebrow></Reveal>
+        <div className="max-w-prose space-y-6 text-[1.12rem] leading-relaxed text-ink/80">
+          <Reveal delay={0.05}><p>Mike Kennedy, PhD is an environmental economist, AI researcher, entrepreneur and applied-technology builder with two decades of experience translating complex systems into practical tools that organizations can use.</p></Reveal>
+          <Reveal delay={0.1}><p>His work spans environmental and resource economics, precision agriculture, housing policy and Indigenous forestry partnerships. He has founded and led ventures including <span className="font-medium text-ink">Green Analytics</span>, <span className="font-medium text-ink">Green Metrics</span>, <span className="font-medium text-ink">Open Housing Canada</span> and <span className="font-medium text-ink">Precision Livestock Diagnostics</span>, and serves as a strategic partner in the Wolastoqey Forest Partnership.</p></Reveal>
+          <Reveal delay={0.15}><p>Through Redstone Studios, Mike brings doctoral-level rigor and hands-on entrepreneurial execution to every engagement — working directly with leaders to ground AI in real-world systems, not vendor promises.</p></Reveal>
         </div>
-        <div className="space-y-px overflow-hidden rounded-sm border border-stone bg-stone">
-          {outcomes.map(([title, challenge, approach, outcome, stat, statLbl], i) => (
-            <Reveal key={title} delay={i * 0.08}>
-              <div className="grid grid-cols-1 gap-8 bg-ink3 p-9 transition-colors duration-300 hover:bg-ink4 md:grid-cols-[1fr_2fr] md:gap-14 md:p-12">
+      </div>
+    </section>
+  )
+}
+
+function Ecosystem() {
+  return (
+    <section className="relative overflow-hidden border-y border-line bg-paper2/60 px-6 py-20 md:px-10 md:py-28">
+      <Topo className="pointer-events-none absolute left-1/2 top-1/2 h-[700px] w-[700px] -translate-x-1/2 -translate-y-1/2 text-forest/[0.05]" />
+      <div className="relative mx-auto max-w-content">
+        <Reveal><Eyebrow className="mb-6">The ecosystem</Eyebrow></Reveal>
+        <Reveal delay={0.05}><h2 className="t-h2 max-w-3xl text-ink">Not a resume — a connected system of ventures.</h2></Reveal>
+
+        <Reveal delay={0.1}>
+          <div className="mt-12 overflow-hidden rounded-lg border border-line bg-paper p-4 md:p-8">
+            <svg viewBox="0 0 1000 560" className="w-full" role="img" aria-label="Ecosystem map of Mike Kennedy's ventures and affiliations">
+              {/* edges */}
+              <g stroke="#cdc8ba" strokeWidth="1.25">
+                {pos.map(([x, y], i) => <line key={i} x1="500" y1="280" x2={x} y2={y} />)}
+              </g>
+              {/* outer nodes */}
+              {pos.map(([x, y], i) => (
+                <g key={i}>
+                  <circle cx={x} cy={y} r="30" fill="#F7F6F2" stroke={stroke[nodes[i][2]]} strokeWidth="2" />
+                  <text x={x} y={y + 6} textAnchor="middle" fontFamily="'IBM Plex Mono', monospace" fontSize="17" fontWeight="500" fill={stroke[nodes[i][2]]}>{i + 1}</text>
+                </g>
+              ))}
+              {/* centre */}
+              <circle cx="500" cy="280" r="58" fill="#2E5E4E" />
+              <text x="500" y="274" textAnchor="middle" fontFamily="Inter, sans-serif" fontSize="20" fontWeight="600" fill="#F7F6F2">Mike</text>
+              <text x="500" y="298" textAnchor="middle" fontFamily="Inter, sans-serif" fontSize="20" fontWeight="600" fill="#F7F6F2">Kennedy</text>
+            </svg>
+          </div>
+        </Reveal>
+
+        <div className="mt-10 grid grid-cols-1 gap-x-12 gap-y-6 sm:grid-cols-2 lg:grid-cols-3">
+          {nodes.map(([name, desc, color], i) => (
+            <Reveal key={name} delay={(i % 3) * 0.05}>
+              <div className="flex gap-3.5 border-t border-line pt-4">
+                <span className={`mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full ${dot[color]} font-mono text-[0.72rem] font-medium text-paper`}>{i + 1}</span>
                 <div>
-                  <h3 className="t-h3 font-display text-cream">{title}</h3>
-                  <div className="mt-6">
-                    <div className="font-display text-[3rem] leading-none text-copperLt">{stat}</div>
-                    <div className="mt-2 text-[0.8rem] uppercase tracking-[0.14em] text-muted2">{statLbl}</div>
-                  </div>
-                </div>
-                <div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
-                  {[['Challenge', challenge], ['Approach', approach], ['Outcome', outcome]].map(([k, v]) => (
-                    <div key={k}>
-                      <div className="mb-2 flex items-center gap-2"><span className="h-px w-4 bg-copper" /><span className="kicker">{k}</span></div>
-                      <p className={`text-[0.92rem] leading-relaxed ${k === 'Outcome' ? 'text-cream2' : 'text-muted'}`}>{v}</p>
-                    </div>
-                  ))}
+                  <div className="text-[1rem] font-semibold text-ink">{name}</div>
+                  <p className="mt-1 text-[0.92rem] leading-relaxed text-muted">{desc}</p>
                 </div>
               </div>
             </Reveal>
           ))}
         </div>
-        <Reveal delay={0.15}>
-          <p className="mt-8 text-[0.85rem] leading-relaxed text-muted2">Individual results will vary based on organizational context, starting conditions, and implementation quality.</p>
+      </div>
+    </section>
+  )
+}
+
+function Quote() {
+  return (
+    <section className="px-6 py-20 md:px-10 md:py-28">
+      <div className="mx-auto max-w-content">
+        <Reveal>
+          <blockquote className="max-w-4xl text-balance text-[clamp(1.5rem,1rem+1.6vw,2.25rem)] font-medium leading-[1.25] tracking-tight text-ink">
+            <span className="text-forest">“</span>I keep a deliberately small client roster — so I'm directly involved in every engagement, start to finish.<span className="text-forest">”</span>
+          </blockquote>
+        </Reveal>
+        <Reveal delay={0.08}>
+          <div className="mt-8 flex flex-wrap items-center gap-4">
+            <PrimaryCTA>Work With Us</PrimaryCTA>
+          </div>
         </Reveal>
       </div>
     </section>
@@ -134,20 +134,10 @@ function Outcomes() {
 export default function About() {
   return (
     <main>
-      <section className="relative overflow-hidden px-6 pb-12 pt-28 md:px-10 md:pb-16 md:pt-32">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_80%_at_25%_15%,rgba(181,103,60,0.13),transparent_65%)]" />
-        <div className="relative mx-auto max-w-content">
-          <Reveal><Kicker className="mb-8">About</Kicker></Reveal>
-          <RevealHeading as="h1" text="Strategy built" className="t-h1 font-display text-cream" />
-          <RevealHeading as="h1" text="from experience" className="t-h1 font-display italic text-copperLt" delay={0.1} />
-          <Reveal delay={0.2}>
-            <p className="mt-8 max-w-prose text-[1.12rem] leading-relaxed text-cream2">I maintain a deliberately small client roster to ensure direct, senior involvement in every engagement — no handoffs to junior teams.</p>
-          </Reveal>
-        </div>
-      </section>
-      <FounderFeature />
-      <Industries />
-      <Outcomes />
+      <PageHero />
+      <Bio />
+      <Ecosystem />
+      <Quote />
     </main>
   )
 }

@@ -1,158 +1,171 @@
-import { useRef } from 'react'
-import { motion, useScroll, useTransform, useInView, animate } from 'framer-motion'
-import { useEffect, useState } from 'react'
-import { PrimaryCTA, ArrowLink, Kicker, Reveal, RevealHeading } from '../components/ui.jsx'
+import { Cpu, LineChart, Database, Boxes, FlaskConical, Rocket } from 'lucide-react'
+import { PrimaryCTA, GhostCTA, ArrowLink, Eyebrow, Reveal, Topo } from '../components/ui.jsx'
+import { SECTORS } from './sectors.js'
 import mike from '../assets/mike.jpg'
 
 /* ============ HERO ============ */
 function Hero() {
-  const ref = useRef(null)
-  const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end start'] })
-  const y = useTransform(scrollYProgress, [0, 1], [0, 120])
-  const opacity = useTransform(scrollYProgress, [0, 0.85], [1, 0])
-  const blueprint = useTransform(scrollYProgress, [0, 1], [0, -120])
-  const portraitY = useTransform(scrollYProgress, [0, 1], [0, 70])
-
   return (
-    <header ref={ref} className="relative flex min-h-[92svh] items-center overflow-hidden pb-20 pt-32 md:pt-36">
-      {/* atmosphere */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_90%_70%_at_72%_35%,rgba(181,103,60,0.13),transparent_64%)]" />
-      <div className="absolute inset-0 bg-[linear-gradient(180deg,#14110f_0%,#19150f_55%,#14110f_100%)]" />
-
-      {/* drifting blueprint */}
-      <motion.svg style={{ y: blueprint }} className="pointer-events-none absolute left-[-12%] top-1/2 h-[640px] w-[640px] -translate-y-1/2 opacity-[0.10]" viewBox="0 0 400 400" fill="none">
-        <g stroke="#b5673c" strokeWidth="0.5">
-          {['M200,30 L340,110 L340,290 L200,370 L60,290 L60,110 Z','M200,75 L300,130 L300,270 L200,325 L100,270 L100,130 Z','M200,120 L260,155 L260,245 L200,280 L140,245 L140,155 Z'].map((d,i)=>(
-            <motion.path key={i} d={d} initial={{pathLength:0,opacity:0}} animate={{pathLength:1,opacity:0.6}} transition={{duration:2.4,delay:0.5+i*0.35,ease:'easeInOut'}} />
-          ))}
-        </g>
-      </motion.svg>
-
-      <motion.div style={{ y, opacity }} className="relative z-10 mx-auto grid w-full max-w-content grid-cols-1 items-center gap-12 px-6 md:px-10 lg:grid-cols-[1.25fr_0.85fr] lg:gap-16">
-        {/* text */}
-        <div>
-          <Reveal delay={0.1}><Kicker className="mb-7">AI Transformation Advisor</Kicker></Reveal>
-          <h1 className="t-hero font-display text-cream">
-            <RevealHeading as="span" text="Build an" delay={0.2} className="block" />
-            <span className="block">
-              <span className="rise-mask inline-block align-top">
-                <motion.span className="inline-block italic text-copperLt" initial={{ y: '100%' }} animate={{ y: 0 }} transition={{ duration: 0.8, delay: 0.45, ease: [0.2, 0.7, 0.3, 1] }}>AI-Native</motion.span>
-              </span>
-              {'\u00A0'}
-              <span className="rise-mask inline-block align-top">
-                <motion.span className="inline-block" initial={{ y: '100%' }} animate={{ y: 0 }} transition={{ duration: 0.8, delay: 0.55, ease: [0.2, 0.7, 0.3, 1] }}>Organization</motion.span>
-              </span>
-            </span>
-          </h1>
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.9, delay: 0.8 }} className="mt-9">
-            <p className="max-w-prose text-[1.1rem] font-light leading-relaxed text-cream2">
-              I help executive teams identify, design, implement, and scale AI-powered workflows that improve productivity, decision-making, and organizational performance.
+    <header className="relative overflow-hidden border-b border-line">
+      <Topo className="pointer-events-none absolute -right-40 top-1/2 h-[760px] w-[760px] -translate-y-1/2 text-forest/[0.07]" />
+      <div className="relative mx-auto grid max-w-content grid-cols-1 items-center gap-12 px-6 pb-20 pt-36 md:px-10 md:pb-28 md:pt-44 lg:grid-cols-[1.15fr_0.85fr] lg:gap-16">
+        <div className="min-w-0">
+          <Reveal><Eyebrow className="mb-6">Applied AI Innovation Studio</Eyebrow></Reveal>
+          <Reveal delay={0.05}>
+            <div className="label mb-4 text-muted">Mike Kennedy, PhD</div>
+          </Reveal>
+          <Reveal delay={0.08}>
+            <h1 className="t-hero text-balance text-ink">
+              Applying AI to build <span className="text-forest">better communities</span>, stronger economies, and healthier ecosystems.
+            </h1>
+          </Reveal>
+          <Reveal delay={0.14}>
+            <p className="t-lead mt-7 max-w-prose text-muted">
+              Redstone Studios combines science, data, AI and entrepreneurship to solve some of Canada's most important challenges.
             </p>
-            <div className="mt-9 flex flex-wrap items-center gap-x-8 gap-y-4">
-              <PrimaryCTA />
-              <ArrowLink to="/services" className="self-center">View Services</ArrowLink>
+          </Reveal>
+          <Reveal delay={0.2}>
+            <div className="mt-9 flex flex-wrap items-center gap-4">
+              <PrimaryCTA>Work With Us</PrimaryCTA>
+              <GhostCTA to="/projects">View Projects</GhostCTA>
             </div>
-          </motion.div>
+          </Reveal>
         </div>
 
-        {/* portrait */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.96 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1, delay: 0.5, ease: [0.2, 0.7, 0.3, 1] }}
-          className="relative mx-auto w-full max-w-[340px] lg:max-w-none"
-        >
-          <div className="relative overflow-hidden rounded-sm border border-stone">
-            <div className="aspect-[4/4.7] overflow-hidden">
-              <motion.img src={mike} alt="Mike Kennedy \u2014 AI Transformation Advisor" style={{ y: portraitY, scale: 1.1 }} className="h-full w-full object-cover object-[50%_14%]" />
+        <Reveal delay={0.12} className="min-w-0 lg:justify-self-end">
+          <figure className="relative mx-auto w-full max-w-[380px]">
+            <div className="overflow-hidden rounded-lg border border-line bg-paper2">
+              <img
+                src={mike}
+                alt="Mike Kennedy, PhD — Founder, Redstone Studios"
+                className="aspect-[4/5] w-full object-cover object-[50%_16%] grayscale-[0.85] contrast-[1.02]"
+              />
             </div>
-            <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink via-ink/65 to-transparent p-6 pt-16">
-              <div className="font-display text-[1.5rem] leading-none text-cream">Mike Kennedy</div>
-              <div className="mt-2 text-[0.82rem] uppercase tracking-[0.16em] text-copperLt">AI Transformation Advisor</div>
-            </div>
-          </div>
-          <div className="pointer-events-none absolute -right-3 -top-3 -z-10 h-full w-full rounded-sm border border-copper/30" />
-        </motion.div>
-      </motion.div>
+            <figcaption className="mt-4 flex items-center justify-between border-t border-line pt-3">
+              <span className="text-[0.95rem] font-medium text-ink">Mike Kennedy, PhD</span>
+              <span className="label text-muted">Founder</span>
+            </figcaption>
+            <span className="pointer-events-none absolute -left-3 -top-3 -z-10 h-24 w-24 border-l border-t border-forest/40" />
+          </figure>
+        </Reveal>
+      </div>
     </header>
   )
 }
 
-/* ============ PROBLEM ============ */
-const problems = [
-  ['01', 'Fragmented Adoption', 'Departments are piloting tools independently with no shared standards, no integration strategy, and no accountability for outcomes.'],
-  ['02', 'Unchanged Workflows', 'AI has been layered on top of legacy processes rather than used to redesign them. The underlying operating model remains the same.'],
-  ['03', 'No Implementation Roadmap', 'Executives lack a clear, practical path from AI curiosity to measurable productivity. Strategy and execution remain disconnected.'],
-  ['04', 'Governance Gaps', 'Without clear AI policy, risk frameworks, or change management, organizations expose themselves to compliance, security, and reputational risk.'],
-]
+/* ============ CREDIBILITY STRIP ============ */
+const ventures = ['UBC', 'Green Analytics', 'Open Housing Canada', 'Green Metrics', 'Precision Livestock Diagnostics', 'Wolastoqey Forest Partnership']
 
-function Problem() {
+function Ventures() {
   return (
-    <section className="relative px-6 py-20 md:px-10 md:py-24">
-      <div className="mx-auto max-w-content">
-        <div className="grid grid-cols-1 gap-14 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
-          <div className="lg:sticky lg:top-32 lg:self-start">
-            <Reveal><Kicker className="mb-7">The Problem</Kicker></Reveal>
-            <RevealHeading as="h2" text="AI tools are everywhere. Results are not." className="t-h2 font-display text-cream" />
-            <Reveal delay={0.15}>
-              <p className="mt-7 max-w-prose text-[1.05rem] leading-relaxed text-muted">
-                Most organizations have purchased AI tools. Very few have changed anything about how they actually work. Teams experiment in isolation, governance is absent, workflows remain unchanged — and the productivity gains leadership promised the board have not materialized.
-              </p>
-            </Reveal>
-          </div>
-          <div>
-            {problems.map(([n, h, p], i) => (
-              <Reveal key={n} delay={i * 0.08}>
-                <div className="group grid grid-cols-[auto_1fr] gap-6 border-t border-stone/70 py-8 transition-colors duration-300 hover:border-copper/60">
-                  <span className="font-display text-[1.6rem] text-copper/70 transition-colors group-hover:text-copperLt">{n}</span>
-                  <div>
-                    <h3 className="mb-2 font-display text-[1.45rem] text-cream">{h}</h3>
-                    <p className="text-[0.98rem] leading-relaxed text-muted">{p}</p>
-                  </div>
-                </div>
-              </Reveal>
-            ))}
-          </div>
+    <section className="border-b border-line bg-paper2/60">
+      <div className="mx-auto max-w-content px-6 py-10 md:px-10">
+        <div className="label mb-5 text-muted2">Ventures & affiliations</div>
+        <div className="flex flex-wrap items-center gap-x-8 gap-y-3">
+          {ventures.map((v) => (
+            <span key={v} className="text-[0.95rem] font-medium text-muted">{v}</span>
+          ))}
         </div>
       </div>
     </section>
   )
 }
 
-/* ============ APPROACH (sticky scroll) ============ */
-const phases = [
-  ['Assess', 'Map current state and spot top opportunities.', 'I begin with a clear-eyed audit of how work actually happens — surfacing the workflows that consume the most time and return the least leverage.'],
-  ['Design', 'Redesign workflows, governance, and teams.', 'I rebuild the operating model around AI-native execution: new processes, clear governance, and teams structured to capture the gains.'],
-  ['Deploy', 'Implement tools, train teams, set standards.', 'I put working systems into the hands of your people, with the training and standards needed to make adoption stick.'],
-  ['Scale', 'Expand across departments and iterate.', 'I extend what works across the organization, measuring impact and compounding returns department by department.'],
+/* ============ PEOPLE / PLANET / PROFIT ============ */
+const pillars = [
+  ['People', 'Better communities', 'Housing, services and institutions that work better for the people who depend on them.', 'forest'],
+  ['Planet', 'Healthier ecosystems', 'Natural capital, forests and land managed with science, data and long-term stewardship.', 'river'],
+  ['Profit', 'Stronger economies', 'Ventures and decision systems that turn applied research into durable economic value.', 'copper'],
+]
+const ring = { forest: 'text-forest', river: 'text-river', copper: 'text-copper' }
+
+function Pillars() {
+  return (
+    <section className="px-6 py-20 md:px-10 md:py-28">
+      <div className="mx-auto max-w-content">
+        <Reveal><Eyebrow className="mb-6">The idea</Eyebrow></Reveal>
+        <Reveal delay={0.05}><h2 className="t-h2 max-w-3xl text-ink">People. Planet. Profit. Treated as one system.</h2></Reveal>
+        <div className="mt-14 grid grid-cols-1 gap-px overflow-hidden rounded-lg border border-line bg-line md:grid-cols-3">
+          {pillars.map(([tag, title, body, color], i) => (
+            <Reveal key={tag} delay={i * 0.06}>
+              <div className="h-full bg-paper p-8 md:p-10">
+                <svg viewBox="0 0 48 48" className={`h-10 w-10 ${ring[color]}`} fill="none" aria-hidden="true">
+                  <circle cx="24" cy="24" r="22" stroke="currentColor" strokeWidth="1.5" />
+                  <circle cx="24" cy="24" r="13" stroke="currentColor" strokeWidth="1.5" opacity="0.6" />
+                  <circle cx="24" cy="24" r="4" fill="currentColor" />
+                </svg>
+                <div className="label mt-6 text-muted2">{tag}</div>
+                <h3 className="t-h3 mt-2 text-ink">{title}</h3>
+                <p className="mt-3 text-[1rem] leading-relaxed text-muted">{body}</p>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+/* ============ WHAT WE BUILD ============ */
+const builds = [
+  [Cpu, 'AI Systems', 'Production AI that does real work inside operations — not demos.'],
+  [LineChart, 'Decision Intelligence', 'Platforms that turn data and models into decisions leaders can act on.'],
+  [Database, 'Data Products', 'Pipelines and products that make institutional data usable and durable.'],
+  [Boxes, 'Digital Twins', 'Living models of assets, land and systems for planning and foresight.'],
+  [FlaskConical, 'Applied Research', 'University-grade research translated into tools organizations can use.'],
+  [Rocket, 'Commercial Ventures', 'Ideas built into companies — from prototype to going concern.'],
 ]
 
-function Approach() {
+function Build() {
   return (
-    <section className="border-y border-stone bg-ink2 px-6 py-20 md:px-10 md:py-24">
-      <div className="mx-auto max-w-content">
-        <div className="mb-12 max-w-3xl">
-          <Reveal><Kicker className="mb-7">How I Work</Kicker></Reveal>
-          <RevealHeading as="h2" text="Strategy. Design. Deployment. Scale." className="t-h2 font-display text-cream" />
-          <Reveal delay={0.15}>
-            <p className="mt-7 text-[1.05rem] leading-relaxed text-muted">
-              I'm not a chatbot vendor, and not a traditional IT consultant. My four-phase model ensures every engagement moves from discovery to measurable organizational change — not just tool installation.
-            </p>
-          </Reveal>
+    <section className="border-y border-line bg-ink text-paper">
+      <div className="mx-auto max-w-content px-6 py-20 md:px-10 md:py-28">
+        <Reveal><Eyebrow className="mb-6" tone="paper">What we build</Eyebrow></Reveal>
+        <Reveal delay={0.05}><h2 className="t-h2 max-w-3xl text-paper">From applied research to systems in production.</h2></Reveal>
+        <div className="mt-14 grid grid-cols-1 gap-px overflow-hidden rounded-lg border border-lineDk bg-lineDk sm:grid-cols-2 lg:grid-cols-3">
+          {builds.map(([Icon, title, body], i) => (
+            <Reveal key={title} delay={(i % 3) * 0.05}>
+              <div className="group h-full bg-ink p-8 transition-colors duration-300 hover:bg-ink3">
+                <Icon size={22} strokeWidth={1.5} className="text-forestLt" />
+                <h3 className="mt-5 text-[1.2rem] font-semibold text-paper">{title}</h3>
+                <p className="mt-2 text-[0.97rem] leading-relaxed text-paperMut">{body}</p>
+              </div>
+            </Reveal>
+          ))}
         </div>
-        <div className="grid grid-cols-1 gap-px overflow-hidden rounded-sm border border-stone bg-stone md:grid-cols-2">
-          {phases.map(([h, sub, body], i) => (
-            <Reveal key={h} delay={(i % 2) * 0.1}>
-              <div className="group relative h-full bg-ink3 p-9 transition-colors duration-500 hover:bg-ink4 md:p-11">
-                <span className="watermark absolute right-6 top-4 text-[5rem] leading-none">0{i + 1}</span>
-                <div className="relative">
-                  <div className="mb-1 flex items-center gap-3">
-                    <span className="h-px w-6 bg-copper" />
-                    <span className="kicker">Phase 0{i + 1}</span>
-                  </div>
-                  <h3 className="t-h3 mb-3 mt-4 font-display text-cream">{h}</h3>
-                  <p className="mb-4 font-display text-[1.05rem] italic text-copperLt">{sub}</p>
-                  <p className="text-[0.97rem] leading-relaxed text-muted">{body}</p>
+      </div>
+    </section>
+  )
+}
+
+/* ============ SELECTED WORK (sectors) ============ */
+const accent = { forest: 'bg-forest', river: 'bg-river', copper: 'bg-copper' }
+
+function Work() {
+  return (
+    <section className="px-6 py-20 md:px-10 md:py-28">
+      <div className="mx-auto max-w-content">
+        <div className="flex flex-wrap items-end justify-between gap-6">
+          <div>
+            <Reveal><Eyebrow className="mb-6">Where we work</Eyebrow></Reveal>
+            <Reveal delay={0.05}><h2 className="t-h2 max-w-2xl text-ink">Frontier sectors, real-world problems.</h2></Reveal>
+          </div>
+          <Reveal delay={0.1}><ArrowLink to="/projects">All projects</ArrowLink></Reveal>
+        </div>
+        <div className="mt-14 grid grid-cols-1 gap-px overflow-hidden rounded-lg border border-line bg-line sm:grid-cols-2 lg:grid-cols-3">
+          {SECTORS.map((s, i) => (
+            <Reveal key={s.name} delay={(i % 3) * 0.05}>
+              <div className="group relative h-full bg-paper p-8 transition-colors duration-300 hover:bg-paper2 md:p-9">
+                <span className={`absolute left-0 top-0 h-px w-12 ${accent[s.color]} transition-all duration-300 group-hover:w-full`} />
+                <div className="flex items-baseline justify-between">
+                  <div className="label text-muted2">{String(i + 1).padStart(2, '0')}</div>
+                </div>
+                <h3 className="t-h3 mt-5 text-ink">{s.name}</h3>
+                <p className="mt-3 text-[0.97rem] leading-relaxed text-muted">{s.short}</p>
+                <div className="mt-6 flex flex-wrap gap-2">
+                  {s.tags.map((t) => (
+                    <span key={t} className="rounded-full border border-line px-3 py-1 text-[0.74rem] font-medium text-muted">{t}</span>
+                  ))}
                 </div>
               </div>
             </Reveal>
@@ -163,39 +176,28 @@ function Approach() {
   )
 }
 
-/* ============ METRICS ============ */
-function Counter({ value, suffix = '' }) {
-  const ref = useRef(null)
-  const inView = useInView(ref, { once: true })
-  const [d, setD] = useState(0)
-  useEffect(() => {
-    if (!inView) return
-    const c = animate(0, value, { duration: 1.6, ease: [0.2, 0.7, 0.3, 1], onUpdate: (v) => setD(Math.round(v)) })
-    return () => c.stop()
-  }, [inView, value])
-  return <span ref={ref}>{d}{suffix}</span>
-}
-
-const metrics = [
-  [4, '', 'Phase Model', 'Assess, Design, Deploy, Scale — a complete transformation framework.'],
-  [12, '+', 'Workflow Types', 'High-value operational workflows redesigned for AI-native execution.'],
-  [10, '+', 'Sectors Served', 'From mining and forestry to government and Indigenous enterprise.'],
-  [5, '', 'Engagement Options', 'Structured programs designed for every stage of organizational readiness.'],
-]
-
-function Metrics() {
+/* ============ ABOUT PREVIEW ============ */
+function AboutPreview() {
   return (
-    <section className="px-6 py-20 md:px-10 md:py-24">
-      <div className="mx-auto grid max-w-content grid-cols-2 gap-x-8 gap-y-14 md:grid-cols-4">
-        {metrics.map(([big, suf, lbl, p], i) => (
-          <Reveal key={lbl} delay={i * 0.1}>
-            <div className="border-t border-copper/40 pt-5">
-              <div className="font-display text-[clamp(3rem,5vw,4.5rem)] leading-none text-cream"><Counter value={big} suffix={suf} /></div>
-              <div className="mt-4 font-body text-[0.72rem] uppercase tracking-[0.2em] text-copperLt">{lbl}</div>
-              <p className="mt-3 text-[0.88rem] leading-relaxed text-muted2">{p}</p>
-            </div>
+    <section className="border-t border-line bg-paper2/60 px-6 py-20 md:px-10 md:py-28">
+      <div className="mx-auto grid max-w-content grid-cols-1 gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
+        <Reveal>
+          <div className="overflow-hidden rounded-lg border border-line">
+            <img src={mike} alt="Mike Kennedy, PhD" className="aspect-[4/4.4] w-full object-cover object-[50%_16%] grayscale-[0.85]" />
+          </div>
+        </Reveal>
+        <div className="flex flex-col justify-center">
+          <Reveal><Eyebrow className="mb-6">The founder</Eyebrow></Reveal>
+          <Reveal delay={0.05}><h2 className="t-h2 text-ink">A scientist, economist and builder.</h2></Reveal>
+          <Reveal delay={0.1}>
+            <p className="mt-6 max-w-prose text-[1.05rem] leading-relaxed text-muted">
+              Mike Kennedy, PhD is an environmental economist, AI researcher and entrepreneur with two decades translating complex systems into tools organizations can use — across housing, natural capital, forestry and agriculture.
+            </p>
           </Reveal>
-        ))}
+          <Reveal delay={0.15}>
+            <div className="mt-8"><ArrowLink to="/about">More about Mike</ArrowLink></div>
+          </Reveal>
+        </div>
       </div>
     </section>
   )
@@ -204,22 +206,21 @@ function Metrics() {
 /* ============ CTA ============ */
 function CTA() {
   return (
-    <section className="relative overflow-hidden border-t border-stone px-6 py-24 md:px-10 md:py-28">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_50%_80%_at_75%_50%,rgba(181,103,60,0.16),transparent_70%)]" />
-      <div className="relative mx-auto max-w-content">
-        <div className="max-w-3xl">
-          <Reveal><Kicker className="mb-7">Begin</Kicker></Reveal>
-          <RevealHeading as="h2" text="Ready to redesign how your organization works?" className="t-h1 font-display text-cream" />
-          <Reveal delay={0.15}>
-            <p className="mt-7 max-w-prose text-[1.1rem] leading-relaxed text-muted">
-              I work with a select number of organizations at any given time. If you're an executive leader serious about AI transformation — not experimentation — I want to hear from you.
-            </p>
-            <div className="mt-10 flex flex-wrap items-center gap-8">
-              <PrimaryCTA />
-              <ArrowLink to="/services">Explore Services</ArrowLink>
-            </div>
-          </Reveal>
-        </div>
+    <section className="px-6 py-20 md:px-10 md:py-28">
+      <div className="mx-auto max-w-content">
+        <Reveal><Eyebrow className="mb-6">Work with us</Eyebrow></Reveal>
+        <Reveal delay={0.05}>
+          <h2 className="t-h2 max-w-3xl text-ink">If you're solving a problem that matters, let's talk.</h2>
+        </Reveal>
+        <Reveal delay={0.1}>
+          <p className="t-lead mt-6 max-w-prose text-muted">
+            We take on a small number of engagements at a time so the work gets our full attention. Tell us what you're trying to build.
+          </p>
+          <div className="mt-9 flex flex-wrap items-center gap-4">
+            <PrimaryCTA>Work With Us</PrimaryCTA>
+            <GhostCTA to="/projects">View Projects</GhostCTA>
+          </div>
+        </Reveal>
       </div>
     </section>
   )
@@ -229,9 +230,11 @@ export default function Home() {
   return (
     <main>
       <Hero />
-      <Problem />
-      <Approach />
-      <Metrics />
+      <Ventures />
+      <Pillars />
+      <Build />
+      <Work />
+      <AboutPreview />
       <CTA />
     </main>
   )
