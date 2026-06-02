@@ -1,0 +1,77 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --copper: #b5673c;
+  --copperLt: #d59873;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: #181614;
+  color: #b3a797;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Fraunces', Georgia, serif;
+  font-weight: 400;
+  color: #f3ead9;
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+}
+
+::selection { background: var(--copper); color: #181614; }
+
+/* Grain overlay */
+.grain::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: #181614; }
+::-webkit-scrollbar-thumb { background: #3a322c; border-radius: 5px; }
+::-webkit-scrollbar-thumb:hover { background: #b5673c; }
+
+/* Reusable */
+.eyebrow {
+  display: inline-block;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--copperLt);
+  padding: 0.45rem 0.9rem;
+  border: 1px solid rgba(181,103,60,0.4);
+  border-radius: 3px;
+}
+
+.text-balance { text-wrap: balance; }
+
+/* Animated copper gradient text */
+.shimmer {
+  background: linear-gradient(110deg, #f3ead9 20%, #d59873 40%, #b5673c 50%, #d59873 60%, #f3ead9 80%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 6s linear infinite;
+}
+@keyframes shimmer {
+  to { background-position: 200% center; }
+}
