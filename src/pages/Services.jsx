@@ -27,7 +27,7 @@ const funding = ['Federal and provincial innovation grants', 'SR&ED tax credits 
 
 function PageHero() {
   return (
-    <section className="relative overflow-hidden px-6 pb-20 pt-40 md:px-10 md:pb-28 md:pt-48">
+    <section className="relative overflow-hidden px-6 pb-12 pt-28 md:px-10 md:pb-16 md:pt-32">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_80%_at_80%_15%,rgba(181,103,60,0.13),transparent_65%)]" />
       <div className="relative mx-auto max-w-content">
         <Reveal><Kicker className="mb-8">Services</Kicker></Reveal>
@@ -45,7 +45,7 @@ function PageHero() {
 
 function Tiers() {
   return (
-    <section className="px-6 py-20 md:px-10">
+    <section className="px-6 py-14 md:px-10 md:py-16">
       <div className="mx-auto max-w-content">
         {tiers.map(([n, name, best, items, featured], i) => (
           <Reveal key={name} delay={i * 0.06}>
@@ -87,7 +87,7 @@ function Tiers() {
           <Reveal delay={0.1}>
             <div className="h-full rounded-sm border border-stone bg-ink3 p-10 md:p-12">
               <h3 className="t-h3 mb-4 font-display text-cream">Fractional Chief AI Officer</h3>
-              <p className="max-w-md text-[1rem] leading-relaxed text-muted">Ongoing executive AI leadership on a monthly retainer. Redstone Studios serves as your organization's senior AI strategist — attending leadership meetings, guiding decisions, managing implementation, and ensuring continuous progress without the cost of a full-time hire.</p>
+              <p className="max-w-md text-[1rem] leading-relaxed text-muted">Ongoing executive AI leadership on a monthly retainer. I serve as your organization's senior AI strategist — attending leadership meetings, guiding decisions, managing implementation, and ensuring continuous progress without the cost of a full-time hire.</p>
               <ArrowLink href={CAL} className="mt-8 inline-block">Learn More</ArrowLink>
             </div>
           </Reveal>
@@ -99,14 +99,14 @@ function Tiers() {
 
 function Workflows() {
   return (
-    <section className="border-y border-stone bg-ink2 px-6 py-28 md:px-10 md:py-36">
+    <section className="border-y border-stone bg-ink2 px-6 py-20 md:px-10 md:py-24">
       <div className="mx-auto max-w-content">
-        <div className="mb-16 max-w-3xl">
+        <div className="mb-12 max-w-3xl">
           <Reveal><Kicker className="mb-7">Workflow Transformation</Kicker></Reveal>
           <RevealHeading as="h2" text="AI applied where it creates the most value" className="t-h2 font-display text-cream" />
           <Reveal delay={0.15}>
             <p className="mt-7 text-[1.05rem] leading-relaxed text-muted">
-              We identify and redesign the workflows that consume the most time and produce the least leverage — the operational bottlenecks executive teams deal with every week.
+              I identify and redesign the workflows that consume the most time and produce the least leverage — the operational bottlenecks executive teams deal with every week.
             </p>
           </Reveal>
         </div>
@@ -128,7 +128,7 @@ function Workflows() {
 
 function Funding() {
   return (
-    <section className="px-6 py-28 md:px-10 md:py-36">
+    <section className="px-6 py-20 md:px-10 md:py-24">
       <div className="mx-auto max-w-content">
         <div className="grid grid-cols-1 gap-14 lg:grid-cols-[1fr_1fr] lg:gap-20">
           <div>
@@ -141,7 +141,7 @@ function Funding() {
             </Reveal>
             <Reveal delay={0.2}>
               <p className="mt-6 text-[0.88rem] leading-relaxed text-muted2">
-                Redstone Studios does not guarantee eligibility for any funding program or specific rebate amounts. Funding availability, eligibility criteria, and application outcomes are determined by the administering bodies. We recommend engaging your accountant or financial advisor in parallel.
+                I do not guarantee eligibility for any funding program or specific rebate amounts. Funding availability, eligibility criteria, and application outcomes are determined by the administering bodies. I recommend engaging your accountant or financial advisor in parallel.
               </p>
             </Reveal>
           </div>

@@ -1,8 +1,8 @@
-# Redstone Studios
+# Mike Kennedy
 
-Marketing site for Redstone Studios — a boutique AI transformation studio.
+Personal-brand site for Mike Kennedy — AI transformation advisor to executive teams.
 
-Built with **Vite + React + Tailwind CSS + Framer Motion**. Four pages (Home, Services, About, Contact) with an editorial, magazine-grade aesthetic: kinetic masked headlines that rise into place, a parallax blueprint hero, asymmetric sticky-column layouts, hairline-ruled index grids, animated metric counters, a parallax founder portrait, case-study outcome rows, refined page transitions, a scroll-progress bar, and a custom cursor. Design language: deep charcoal, warm copper accent, Fraunces serif display over Outfit body.
+Built with **Vite + React + Tailwind CSS + Framer Motion**. Four pages (Home, Services, About, Contact) with an editorial, magazine-grade aesthetic: a photo-led personal-brand hero, kinetic masked headlines that rise into place, a parallax blueprint backdrop, asymmetric sticky-column layouts, hairline-ruled index grids, animated metric counters, a parallax portrait, case-study outcome rows, refined page transitions, a scroll-progress bar, a custom cursor, per-page titles, social/OG share image, a 404 page, and reduced-motion + keyboard-focus accessibility support. Design language: deep charcoal, warm copper accent, Fraunces serif display over Outfit body.
 
 ---
 

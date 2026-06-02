@@ -34,6 +34,24 @@ h1, h2, h3, h4 {
 
 ::selection { background: var(--copper); color: #14110f; }
 
+/* Keyboard focus — the custom cursor hides the native one, so visible focus matters */
+:focus-visible {
+  outline: 2px solid var(--copperLt);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+:focus:not(:focus-visible) { outline: none; }
+
+/* Respect reduced-motion preference */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
 .t-hero    { font-size: clamp(3rem, 8vw, 7rem); line-height: 0.98; letter-spacing: -0.03em; }
 .t-h1      { font-size: clamp(2.6rem, 6vw, 5rem); letter-spacing: -0.025em; }
 .t-h2      { font-size: clamp(2rem, 4.5vw, 3.6rem); letter-spacing: -0.02em; }
@@ -76,4 +94,12 @@ h1, h2, h3, h4 {
   font-family: 'Fraunces', serif;
   -webkit-text-stroke: 1px rgba(181,103,60,0.18);
   color: transparent;
+}
+
+/* Mask for the word-rise reveal. The padding gives descenders (g, y, p, j)
+   room so they aren't clipped; the equal negative margin keeps layout identical. */
+.rise-mask {
+  overflow: hidden;
+  padding-bottom: 0.22em;
+  margin-bottom: -0.22em;
 }

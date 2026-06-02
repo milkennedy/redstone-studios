@@ -7,10 +7,8 @@ export const CAL = 'https://calendly.com/milkennedy/15min'
 export function Logo({ className = '' }) {
   return (
     <svg className={className} viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <rect x="3" y="18" width="26" height="11" rx="1.5" fill="#b5673c" />
-      <line x1="16" y1="18" x2="16" y2="29" stroke="#14110f" strokeWidth="1.4" />
-      <line x1="3" y1="23.5" x2="29" y2="23.5" stroke="#14110f" strokeWidth="1.4" />
-      <path d="M16 18 C16 12, 11 11, 11 6 C14 8, 16 6, 16 3 C16 6, 18 8, 21 6 C21 11, 16 12, 16 18Z" fill="#d59873" />
+      <rect x="1" y="1" width="30" height="30" rx="7" stroke="#b5673c" strokeWidth="1.4" />
+      <text x="16" y="21.5" textAnchor="middle" fontFamily="Fraunces, Georgia, serif" fontSize="14" fontWeight="500" fill="#f3ead9" letterSpacing="-0.5">MK</text>
     </svg>
   )
 }
@@ -72,7 +70,7 @@ export function RevealHeading({ text, className = '', as: Tag = 'h2', delay = 0 
   return (
     <Tag className={className}>
       {words.map((w, i) => (
-        <span key={i} className="inline-block overflow-hidden align-top">
+        <span key={i} className="rise-mask inline-block align-top">
           <motion.span
             className="inline-block"
             initial={{ y: '100%' }}

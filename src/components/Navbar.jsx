@@ -25,6 +25,11 @@ export default function Navbar() {
 
   useEffect(() => { setOpen(false) }, [loc.pathname])
 
+  useEffect(() => {
+    document.body.style.overflow = open ? 'hidden' : ''
+    return () => { document.body.style.overflow = '' }
+  }, [open])
+
   return (
     <header
       className={`fixed inset-x-0 top-0 z-[1000] transition-all duration-500 ease-smooth ${
@@ -34,7 +39,7 @@ export default function Navbar() {
       <nav className="mx-auto flex max-w-content items-center justify-between px-6 py-4 md:px-10">
         <Link to="/" className="flex items-center gap-3 font-display text-[1.25rem] text-cream" data-cursor>
           <Logo className="h-7 w-7 shrink-0" />
-          <span>Redstone <span className="text-copperLt">Studios</span></span>
+          <span>Mike <span className="text-copperLt">Kennedy</span></span>
         </Link>
 
         <div className="hidden items-center gap-10 md:flex">
@@ -69,7 +74,7 @@ export default function Navbar() {
             <motion.div
               initial={{ x: '100%' }} animate={{ x: 0 }} exit={{ x: '100%' }}
               transition={{ duration: 0.45, ease: [0.2, 0.7, 0.3, 1] }}
-              className="fixed right-0 top-0 flex h-screen w-[80vw] max-w-[340px] flex-col justify-center gap-2 border-l border-stone bg-ink2 px-10 md:hidden"
+              className="fixed right-0 top-0 flex h-[100svh] w-[80vw] max-w-[340px] flex-col justify-center gap-2 border-l border-stone bg-ink2 px-10 md:hidden"
             >
               {links.map((l, i) => (
                 <motion.div key={l.to} initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.1 + i * 0.07 }}>

@@ -7,7 +7,7 @@ export default function Footer() {
       {/* CTA strip */}
       <div className="mx-auto max-w-content px-6 py-20 md:px-10">
         <div className="flex flex-col items-start justify-between gap-8 md:flex-row md:items-end">
-          <h2 className="t-h2 max-w-2xl font-display text-cream">Let's build your AI-native organization.</h2>
+          <h2 className="t-h2 max-w-2xl font-display text-cream">Let's build your AI-native organization — together.</h2>
           <a href={CAL} target="_blank" rel="noopener noreferrer" className="group inline-flex shrink-0 items-center gap-2.5 rounded-sm bg-copper px-7 py-4 text-[0.9rem] font-medium tracking-wide text-white transition-all duration-300 ease-smooth hover:bg-copperLt">
             Book an AI Transformation Call
             <span className="transition-transform duration-300 ease-smooth group-hover:translate-x-1">→</span>
@@ -22,10 +22,10 @@ export default function Footer() {
           <div>
             <Link to="/" className="flex items-center gap-3 font-display text-[1.25rem] text-cream">
               <Logo className="h-7 w-7" />
-              <span>Redstone <span className="text-copperLt">Studios</span></span>
+              <span>Mike <span className="text-copperLt">Kennedy</span></span>
             </Link>
             <p className="mt-5 max-w-sm text-[0.95rem] leading-relaxed text-muted">
-              A boutique AI transformation studio operating at the intersection of organizational strategy and applied AI implementation. We fix the gap between AI investment and AI value.
+              AI transformation advisor to executive teams. I work at the intersection of organizational strategy and applied AI implementation — closing the gap between AI investment and AI value.
             </p>
           </div>
           <div>
@@ -42,8 +42,8 @@ export default function Footer() {
           </div>
         </div>
         <div className="mt-14 flex flex-wrap justify-between gap-4 border-t border-stone/60 pt-7 text-[0.8rem] text-muted2">
-          <span>© {new Date().getFullYear()} Redstone Studios. All rights reserved.</span>
-          <span>Founded by Mike Kennedy, PhD · Canada</span>
+          <span>© {new Date().getFullYear()} Mike Kennedy. All rights reserved.</span>
+          <span>Mike Kennedy, PhD · Canada</span>
         </div>
       </div>
     </footer>
