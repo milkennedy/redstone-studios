@@ -298,7 +298,7 @@ function PageHero() {
             <div className="overflow-hidden rounded-lg border border-line">
               <img src={mike} alt="Mike Kennedy, PhD — Applied AI Innovation Studio" className="aspect-[4/4.6] w-full max-w-[400px] object-cover object-[50%_16%] grayscale-[0.85]" />
             </div>
-            <figcaption className="label mt-3 text-muted2">June 4th, 2026</figcaption>
+            <figcaption className="label mt-3 text-muted2">Vancouver, BC</figcaption>
           </figure>
         </Reveal>
       </div>

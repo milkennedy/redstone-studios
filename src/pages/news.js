@@ -19,7 +19,7 @@ export const NEWS = [
     tags: ['Forestry', 'Indigenous Partnerships'],
   },
   {
-    date: 'June 2026',
+    date: 'May 20, 2026',
     source: 'Business in Vancouver',
     title: 'Experts warn B.C.’s forest carbon market is hitting a “dead end”',
     url: 'https://www.biv.com/news/experts-warn-bcs-forest-carbon-market-hitting-a-dead-end-12291061',
@@ -28,7 +28,7 @@ export const NEWS = [
     tags: ['Carbon Markets', 'Forestry'],
   },
   {
-    date: 'Spring 2026',
+    date: 'April 14, 2026',
     source: 'Environmental Finance',
     title: 'Canada’s Expert Taskforce on Natural Capital Accounting and Nature Financing is now operational',
     url: 'https://www.environmental-finance.com/content/news/canada-to-launch-taskforce-on-nature-finance-and-natural-capital-accounting.html',
@@ -37,7 +37,7 @@ export const NEWS = [
     tags: ['Natural Capital', 'Policy'],
   },
   {
-    date: 'May 2026',
+    date: 'May 8, 2026',
     source: 'RealAgriculture',
     title: 'Canada invests $30M in agtech accelerators, including CAAIN for precision livestock innovation',
     url: 'https://www.realagriculture.com/2026/05/30-million-up-for-grabs-for-clean-tech-projects-focused-on-agriculture/',
@@ -46,7 +46,7 @@ export const NEWS = [
     tags: ['Precision Agriculture', 'Funding'],
   },
   {
-    date: '2026',
+    date: 'September 18, 2023',
     source: 'The Globe and Mail',
     title: 'Nature-related risk disclosure for Canadian companies may be years away',
     url: 'https://www.theglobeandmail.com/business/article-nature-related-risk-disclosure-for-canadian-companies-may-be-years/',
