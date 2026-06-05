@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { Link, NavLink, useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
-import { Logo, CAL, EASE } from './ui.jsx'
+import { Logo, CAL, ACADEMY, EASE } from './ui.jsx'
 
 const links = [
   { to: '/about', label: 'About' },
@@ -53,6 +53,9 @@ export default function Navbar() {
               )}
             </NavLink>
           ))}
+          <a href={ACADEMY} target="_blank" rel="noopener noreferrer" className="group relative py-1 text-[0.92rem] font-medium text-muted transition-colors hover:text-ink">
+            Academy <span aria-hidden="true" className="text-forest">↗</span>
+          </a>
           <a href={CAL} target="_blank" rel="noopener noreferrer" className="rounded-md bg-forest px-5 py-2.5 text-[0.9rem] font-medium text-paper transition-colors duration-300 ease-smooth hover:bg-forestDk">
             Let's Talk
           </a>
@@ -81,6 +84,9 @@ export default function Navbar() {
                   {l.label}
                 </NavLink>
               ))}
+              <a href={ACADEMY} target="_blank" rel="noopener noreferrer" className="block border-b border-line py-4 text-[1.4rem] font-medium text-ink">
+                Academy <span aria-hidden="true" className="text-forest">↗</span>
+              </a>
               <a href={CAL} target="_blank" rel="noopener noreferrer" className="mt-6 inline-flex w-fit rounded-md bg-forest px-6 py-3 font-medium text-paper">Let's Talk</a>
             </motion.div>
           </>

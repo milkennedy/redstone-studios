@@ -3,6 +3,7 @@ import { motion } from 'framer-motion'
 import { ArrowRight, ArrowUpRight } from 'lucide-react'
 
 export const CAL = 'https://calendly.com/milkennedy/15min'
+export const ACADEMY = 'https://web-production-d37c1.up.railway.app/'
 export const EASE = [0.22, 0.61, 0.36, 1]
 
 /* Topographic peak mark — concentric contours rising to a node */

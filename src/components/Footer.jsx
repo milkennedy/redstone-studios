@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { Logo, CAL } from './ui.jsx'
+import { Logo, CAL, ACADEMY } from './ui.jsx'
 
 export default function Footer() {
   return (
@@ -37,6 +37,7 @@ export default function Footer() {
           </div>
           <div>
             <h4 className="label mb-5 text-paperMut">Engage</h4>
+            <a href={ACADEMY} target="_blank" rel="noopener noreferrer" className="mb-3 block w-fit text-[0.95rem] text-paperMut transition-colors hover:text-paper">AI Builder Academy ↗</a>
             <a href={CAL} target="_blank" rel="noopener noreferrer" className="mb-3 block w-fit text-[0.95rem] text-paperMut transition-colors hover:text-paper">Let's Talk</a>
             <Link to="/sectors" className="mb-3 block w-fit text-[0.95rem] text-paperMut transition-colors hover:text-paper">View Sectors</Link>
             <Link to="/about" className="mb-3 block w-fit text-[0.95rem] text-paperMut transition-colors hover:text-paper">About Mike</Link>

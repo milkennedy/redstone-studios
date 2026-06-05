@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Cpu, LineChart, Database, Boxes, FlaskConical, Rocket } from 'lucide-react'
-import { PrimaryCTA, GhostCTA, ArrowLink, Eyebrow, Reveal, Topo, EASE } from '../components/ui.jsx'
+import { Cpu, LineChart, Database, Boxes, FlaskConical, Rocket, Globe, Bot, Hammer } from 'lucide-react'
+import { PrimaryCTA, GhostCTA, ArrowLink, Eyebrow, Reveal, Topo, EASE, ACADEMY } from '../components/ui.jsx'
 import { SECTORS } from './sectors.js'
 import { NEWS } from './news.js'
 import Testimonials from '../components/Testimonials.jsx'
@@ -94,6 +94,7 @@ const ventures = [
   { name: 'Open Housing Canada', url: 'https://openhousingcanada.ca/', domain: 'openhousingcanada.ca' },
   { name: 'Green Metrics', url: 'https://www.greenmetrics.ca/', domain: 'greenmetrics.ca' },
   { name: 'Precision Livestock Diagnostics', url: 'https://www.precisionlivestockdiagnostics.com/', domain: 'precisionlivestockdiagnostics.com' },
+  { name: 'AI Builder Academy', url: ACADEMY, domain: 'redstone academy' },
   { name: 'Wolastoqey Forest Partnership', soon: true },
 ]
 
@@ -277,6 +278,53 @@ function Work() {
   )
 }
 
+/* ============ ACADEMY ============ */
+const academyPoints = [
+  [Globe, 'Build real websites', 'Deploy live sites with AI on domains you own — no agency required.'],
+  [Hammer, 'Ship working tools', 'Databases, dashboards and internal apps that replace spreadsheet duct tape.'],
+  [Bot, 'Direct AI agents', 'Research, email and workflow agents that keep producing value after you log off.'],
+]
+
+function Academy() {
+  return (
+    <section className="border-t border-line bg-paper2/60 px-6 py-20 md:px-10 md:py-28">
+      <div className="mx-auto max-w-content">
+        <div className="grid grid-cols-1 gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16">
+          <div>
+            <Reveal><Eyebrow className="mb-6">The online studio</Eyebrow></Reveal>
+            <Reveal delay={0.05}>
+              <h2 className="t-h2 max-w-2xl text-ink">Redstone AI Builder Academy</h2>
+            </Reveal>
+            <Reveal delay={0.1}>
+              <p className="t-lead mt-6 max-w-prose text-muted">
+                Our online studio teaches Canadians how to use AI to build websites, tools, dashboards and deployable applications that create real economic value. Every course ends with something shipped — not a certificate.
+              </p>
+            </Reveal>
+            <Reveal delay={0.15}>
+              <div className="mt-9 flex flex-wrap items-center gap-4">
+                <PrimaryCTA href={ACADEMY}>Enter the Academy</PrimaryCTA>
+              </div>
+            </Reveal>
+          </div>
+          <div className="flex flex-col justify-center gap-px overflow-hidden rounded-lg border border-line bg-line">
+            {academyPoints.map(([Icon, title, body], i) => (
+              <Reveal key={title} delay={i * 0.06}>
+                <div className="flex items-start gap-5 bg-paper p-6 md:p-7">
+                  <Icon size={22} strokeWidth={1.5} className="mt-0.5 shrink-0 text-forest" />
+                  <div>
+                    <h3 className="text-[1.05rem] font-semibold text-ink">{title}</h3>
+                    <p className="mt-1 text-[0.95rem] leading-relaxed text-muted">{body}</p>
+                  </div>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
 /* ============ ABOUT PREVIEW ============ */
 function AboutPreview() {
   return (
@@ -336,6 +384,7 @@ export default function Home() {
       <Pillars />
       <Build />
       <Work />
+      <Academy />
       <AboutPreview />
       <Testimonials />
       <CTA />
