@@ -23,7 +23,7 @@ export default function Contact() {
     <main>
       <header className="border-b border-line">
         <div className="mx-auto max-w-content px-6 pb-16 pt-36 md:px-10 md:pb-20 md:pt-44">
-          <Reveal><Eyebrow className="mb-6">Work with us</Eyebrow></Reveal>
+          <Reveal><Eyebrow className="mb-6">Let's talk</Eyebrow></Reveal>
           <Reveal delay={0.05}>
             <h1 className="t-hero max-w-4xl text-balance text-ink">Let's build something that matters.</h1>
           </Reveal>

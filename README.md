@@ -1,6 +1,6 @@
-# Redstone Studios — Mike Kennedy
+# Mike Kennedy — Applied AI Innovation Studio
 
-Site for **Redstone Studios**, an applied AI innovation studio founded by Mike Kennedy, PhD.
+Site for **Mike Kennedy, PhD** — an applied AI innovation studio combining science, data, AI and entrepreneurship.
 
 Built with **Vite + React + Tailwind CSS + Framer Motion**. Four pages (Home, Projects, About, Contact). Design language: scientific credibility meets frontier innovation — off-white paper, deep charcoal, forest-green primary accent with copper and river-blue used sparingly; Inter + IBM Plex Mono; topographic / network visual motifs (People · Planet · Profit). Strict type scale, subtle ≤300ms motion, an ecosystem map of Mike's ventures, sector case-study cards, per-page titles, social/OG share image, a 404 page, and reduced-motion + keyboard-focus accessibility support.
 
@@ -39,7 +39,7 @@ From inside this folder:
 ```bash
 git init
 git add .
-git commit -m "Redstone Studios website"
+git commit -m "Mike Kennedy website"
 git branch -M main
 git remote add origin https://github.com/YOUR_USERNAME/redstone-studios.git
 git push -u origin main

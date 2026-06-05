@@ -5,8 +5,9 @@ import { Menu, X } from 'lucide-react'
 import { Logo, CAL, EASE } from './ui.jsx'
 
 const links = [
-  { to: '/projects', label: 'Projects' },
+  { to: '/sectors', label: 'Sectors' },
   { to: '/about', label: 'About' },
+  { to: '/news', label: 'News' },
   { to: '/contact', label: 'Contact' },
 ]
 
@@ -36,9 +37,9 @@ export default function Navbar() {
       }`}
     >
       <nav className="mx-auto flex max-w-content items-center justify-between px-6 py-4 md:px-10">
-        <Link to="/" className="flex items-center gap-2.5 text-[1.05rem] font-semibold tracking-tight text-ink">
-          <Logo className="h-7 w-7 shrink-0 text-forest" />
-          <span>Redstone Studios</span>
+        <Link to="/" className="flex items-center gap-3 text-[1.35rem] font-semibold tracking-tight text-ink">
+          <Logo className="h-9 w-9 shrink-0 text-forest" />
+          <span>Mike Kennedy</span>
         </Link>
 
         <div className="hidden items-center gap-9 md:flex">
@@ -53,7 +54,7 @@ export default function Navbar() {
             </NavLink>
           ))}
           <a href={CAL} target="_blank" rel="noopener noreferrer" className="rounded-md bg-forest px-5 py-2.5 text-[0.9rem] font-medium text-paper transition-colors duration-300 ease-smooth hover:bg-forestDk">
-            Work With Us
+            Let's Talk
           </a>
         </div>
 
@@ -80,7 +81,7 @@ export default function Navbar() {
                   {l.label}
                 </NavLink>
               ))}
-              <a href={CAL} target="_blank" rel="noopener noreferrer" className="mt-6 inline-flex w-fit rounded-md bg-forest px-6 py-3 font-medium text-paper">Work With Us</a>
+              <a href={CAL} target="_blank" rel="noopener noreferrer" className="mt-6 inline-flex w-fit rounded-md bg-forest px-6 py-3 font-medium text-paper">Let's Talk</a>
             </motion.div>
           </>
         )}

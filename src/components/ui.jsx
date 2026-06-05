@@ -32,7 +32,7 @@ export function Eyebrow({ children, className = '', tone = 'forest' }) {
 }
 
 /* Primary — solid forest. Internal (to) or external (href). */
-export function PrimaryCTA({ children = 'Work With Us', href, to = '/contact', className = '' }) {
+export function PrimaryCTA({ children = "Let's Talk", href, to = '/contact', className = '' }) {
   const cls = `group inline-flex items-center justify-center gap-2 rounded-md bg-forest px-6 py-3.5 text-[0.95rem] font-medium text-paper transition-colors duration-300 ease-smooth hover:bg-forestDk ${className}`
   const inner = <>{children}<ArrowRight size={17} className="transition-transform duration-300 ease-smooth group-hover:translate-x-1" /></>
   if (href) return <a href={href} target="_blank" rel="noopener noreferrer" className={cls}>{inner}</a>
@@ -40,7 +40,7 @@ export function PrimaryCTA({ children = 'Work With Us', href, to = '/contact', c
 }
 
 /* Secondary — outline. */
-export function GhostCTA({ children = 'View Projects', href, to = '/projects', className = '', dark = false }) {
+export function GhostCTA({ children = 'View Sectors', href, to = '/sectors', className = '', dark = false }) {
   const border = dark ? 'border-paper/25 text-paper hover:bg-paper/10' : 'border-ink/15 text-ink hover:bg-ink/[0.04]'
   const cls = `group inline-flex items-center justify-center gap-2 rounded-md border px-6 py-3.5 text-[0.95rem] font-medium transition-colors duration-300 ease-smooth ${border} ${className}`
   const inner = <>{children}<ArrowRight size={17} className="transition-transform duration-300 ease-smooth group-hover:translate-x-1" /></>

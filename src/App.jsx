@@ -1,27 +1,30 @@
 import { useEffect } from 'react'
-import { Routes, Route, useLocation, Link } from 'react-router-dom'
+import { Routes, Route, useLocation, Link, Navigate } from 'react-router-dom'
 import { AnimatePresence, motion, MotionConfig } from 'framer-motion'
 import Navbar from './components/Navbar.jsx'
 import Footer from './components/Footer.jsx'
 import { ScrollProgress } from './components/Effects.jsx'
 import { PrimaryCTA, GhostCTA, EASE } from './components/ui.jsx'
 import Home from './pages/Home.jsx'
-import Projects from './pages/Projects.jsx'
+import Sectors from './pages/Sectors.jsx'
 import About from './pages/About.jsx'
+import News from './pages/News.jsx'
+import Newsletter from './pages/Newsletter.jsx'
 import Contact from './pages/Contact.jsx'
 
 const TITLES = {
-  '/': 'Mike Kennedy — Redstone Studios | Applied AI Innovation Studio',
-  '/projects': 'Projects — Redstone Studios',
-  '/about': 'About Mike Kennedy, PhD — Redstone Studios',
-  '/contact': 'Work With Us — Redstone Studios',
+  '/': 'Mike Kennedy, PhD | Applied AI Innovation Studio',
+  '/sectors': 'Sectors — Mike Kennedy',
+  '/about': 'About Mike Kennedy, PhD',
+  '/news': 'News — Mike Kennedy',
+  "/contact": "Let's Talk — Mike Kennedy",
 }
 
 function ScrollToTop() {
   const { pathname } = useLocation()
   useEffect(() => {
     window.scrollTo(0, 0)
-    document.title = TITLES[pathname] || 'Redstone Studios'
+    document.title = TITLES[pathname] || 'Mike Kennedy'
   }, [pathname])
   return null
 }
@@ -50,7 +53,7 @@ function NotFound() {
         </p>
         <div className="mt-9 flex flex-wrap items-center gap-4">
           <PrimaryCTA to="/">Return Home</PrimaryCTA>
-          <GhostCTA to="/projects">View Projects</GhostCTA>
+          <GhostCTA to="/sectors">View Sectors</GhostCTA>
         </div>
       </div>
     </main>
@@ -67,8 +70,11 @@ export default function App() {
       <AnimatePresence mode="wait">
         <Routes location={location} key={location.pathname}>
           <Route path="/" element={<Page><Home /></Page>} />
-          <Route path="/projects" element={<Page><Projects /></Page>} />
+          <Route path="/sectors" element={<Page><Sectors /></Page>} />
+          <Route path="/projects" element={<Navigate to="/sectors" replace />} />
           <Route path="/about" element={<Page><About /></Page>} />
+          <Route path="/news" element={<Page><News /></Page>} />
+          <Route path="/newsletter/:slug" element={<Page><Newsletter /></Page>} />
           <Route path="/contact" element={<Page><Contact /></Page>} />
           <Route path="*" element={<Page><NotFound /></Page>} />
         </Routes>

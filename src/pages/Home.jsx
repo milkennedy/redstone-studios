@@ -1,6 +1,11 @@
+import { useState } from 'react'
+import { Link } from 'react-router-dom'
+import { motion, AnimatePresence } from 'framer-motion'
 import { Cpu, LineChart, Database, Boxes, FlaskConical, Rocket } from 'lucide-react'
-import { PrimaryCTA, GhostCTA, ArrowLink, Eyebrow, Reveal, Topo } from '../components/ui.jsx'
+import { PrimaryCTA, GhostCTA, ArrowLink, Eyebrow, Reveal, Topo, EASE } from '../components/ui.jsx'
 import { SECTORS } from './sectors.js'
+import { NEWS } from './news.js'
+import Testimonials from '../components/Testimonials.jsx'
 import mike from '../assets/mike.jpg'
 
 /* ============ HERO ============ */
@@ -8,7 +13,7 @@ function Hero() {
   return (
     <header className="relative overflow-hidden border-b border-line">
       <Topo className="pointer-events-none absolute -right-40 top-1/2 h-[760px] w-[760px] -translate-y-1/2 text-forest/[0.07]" />
-      <div className="relative mx-auto grid max-w-content grid-cols-1 items-center gap-12 px-6 pb-20 pt-36 md:px-10 md:pb-28 md:pt-44 lg:grid-cols-[1.15fr_0.85fr] lg:gap-16">
+      <div className="relative mx-auto grid max-w-content grid-cols-1 items-center gap-12 px-6 pb-20 pt-16 md:px-10 md:pb-28 md:pt-24 lg:grid-cols-[1.15fr_0.85fr] lg:gap-16">
         <div className="min-w-0">
           <Reveal><Eyebrow className="mb-6">Applied AI Innovation Studio</Eyebrow></Reveal>
           <Reveal delay={0.05}>
@@ -21,13 +26,13 @@ function Hero() {
           </Reveal>
           <Reveal delay={0.14}>
             <p className="t-lead mt-7 max-w-prose text-muted">
-              Redstone Studios combines science, data, AI and entrepreneurship to solve some of Canada's most important challenges.
+              We combine science, data, AI and entrepreneurship to solve some of Canada's most important challenges.
             </p>
           </Reveal>
           <Reveal delay={0.2}>
             <div className="mt-9 flex flex-wrap items-center gap-4">
-              <PrimaryCTA>Work With Us</PrimaryCTA>
-              <GhostCTA to="/projects">View Projects</GhostCTA>
+              <PrimaryCTA>Let's Talk</PrimaryCTA>
+              <GhostCTA to="/sectors">View Sectors</GhostCTA>
             </div>
           </Reveal>
         </div>
@@ -37,7 +42,7 @@ function Hero() {
             <div className="overflow-hidden rounded-lg border border-line bg-paper2">
               <img
                 src={mike}
-                alt="Mike Kennedy, PhD — Founder, Redstone Studios"
+                alt="Mike Kennedy, PhD — Applied AI Innovation Studio"
                 className="aspect-[4/5] w-full object-cover object-[50%_16%] grayscale-[0.85] contrast-[1.02]"
               />
             </div>
@@ -53,17 +58,113 @@ function Hero() {
   )
 }
 
+/* ============ NEWS TICKER ============ */
+function NewsTicker() {
+  if (!NEWS.length) return null
+  const loop = [...NEWS, ...NEWS, ...NEWS, ...NEWS] // two identical halves for a seamless -50% loop
+  return (
+    <section className="mt-[72px] flex items-center overflow-hidden border-b border-line bg-ink py-3 text-paper" aria-label="Latest news">
+      <Link to="/news" className="label shrink-0 border-r border-lineDk px-6 text-forestLt transition-colors hover:text-paper md:px-8">
+        Latest
+      </Link>
+      <div className="ticker-wrap relative flex-1 overflow-hidden">
+        <div className="animate-ticker flex w-max items-center">
+          {loop.map((n, i) => (
+            <a
+              key={i}
+              href={n.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex shrink-0 items-center gap-3 px-8 text-[0.88rem] text-paperMut transition-colors hover:text-paper"
+            >
+              <span className="label shrink-0 text-forestLt">{n.date}</span>
+              {n.title}
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
 /* ============ CREDIBILITY STRIP ============ */
-const ventures = ['UBC', 'Green Analytics', 'Open Housing Canada', 'Green Metrics', 'Precision Livestock Diagnostics', 'Wolastoqey Forest Partnership']
+const ventures = [
+  { name: 'UBC', url: 'https://dais.chbe.ubc.ca/people/michael-kennedy/', domain: 'dais.chbe.ubc.ca' },
+  { name: 'Green Analytics', url: 'https://www.greenanalytics.ca/', domain: 'greenanalytics.ca' },
+  { name: 'Open Housing Canada', url: 'https://openhousingcanada.ca/', domain: 'openhousingcanada.ca' },
+  { name: 'Green Metrics', url: 'https://www.greenmetrics.ca/', domain: 'greenmetrics.ca' },
+  { name: 'Precision Livestock Diagnostics', url: 'https://www.precisionlivestockdiagnostics.com/', domain: 'precisionlivestockdiagnostics.com' },
+  { name: 'Wolastoqey Forest Partnership', soon: true },
+]
+
+const thumb = (url) => `https://image.thum.io/get/width/600/crop/700/${url}`
 
 function Ventures() {
+  const [open, setOpen] = useState(null)
+
   return (
     <section className="border-b border-line bg-paper2/60">
       <div className="mx-auto max-w-content px-6 py-10 md:px-10">
         <div className="label mb-5 text-muted2">Ventures & affiliations</div>
         <div className="flex flex-wrap items-center gap-x-8 gap-y-3">
-          {ventures.map((v) => (
-            <span key={v} className="text-[0.95rem] font-medium text-muted">{v}</span>
+          {ventures.map((v, i) => (
+            <div
+              key={v.name}
+              className="relative"
+              onMouseEnter={() => setOpen(i)}
+              onMouseLeave={() => setOpen(null)}
+            >
+              <button
+                onClick={() => setOpen(open === i ? null : i)}
+                className={`text-[0.95rem] font-medium transition-colors duration-200 ${open === i ? 'text-ink' : 'text-muted hover:text-ink'}`}
+                aria-expanded={open === i}
+              >
+                {v.name}
+              </button>
+              <AnimatePresence>
+                {open === i && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 6, scale: 0.98 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: 6, scale: 0.98 }}
+                    transition={{ duration: 0.18, ease: EASE }}
+                    className="absolute left-1/2 top-full z-50 w-64 -translate-x-1/2 pt-3"
+                  >
+                    {v.soon ? (
+                      <div className="overflow-hidden rounded-lg border border-line bg-paper shadow-[0_16px_40px_rgba(17,19,21,0.14)]">
+                        <div className="flex aspect-[6/4] items-center justify-center bg-paper2">
+                          <span className="label text-muted2">Website coming soon</span>
+                        </div>
+                        <div className="border-t border-line px-4 py-3 text-[0.85rem] font-medium text-ink">{v.name}</div>
+                      </div>
+                    ) : (
+                      <a
+                        href={v.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="group block overflow-hidden rounded-lg border border-line bg-paper shadow-[0_16px_40px_rgba(17,19,21,0.14)]"
+                      >
+                        <div className="aspect-[6/4] overflow-hidden bg-paper2">
+                          <img
+                            src={thumb(v.url)}
+                            alt={`${v.name} website preview`}
+                            loading="lazy"
+                            className="h-full w-full object-cover object-top transition-transform duration-500 ease-smooth group-hover:scale-[1.03]"
+                          />
+                        </div>
+                        <div className="flex items-center justify-between border-t border-line px-4 py-3">
+                          <div className="min-w-0">
+                            <div className="truncate text-[0.85rem] font-medium text-ink">{v.name}</div>
+                            <div className="label mt-0.5 text-muted2">{v.domain}</div>
+                          </div>
+                          <span className="shrink-0 text-forest transition-transform duration-300 ease-smooth group-hover:-translate-y-0.5 group-hover:translate-x-0.5">&#8599;</span>
+                        </div>
+                      </a>
+                    )}
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
           ))}
         </div>
       </div>
@@ -150,7 +251,7 @@ function Work() {
             <Reveal><Eyebrow className="mb-6">Where we work</Eyebrow></Reveal>
             <Reveal delay={0.05}><h2 className="t-h2 max-w-2xl text-ink">Frontier sectors, real-world problems.</h2></Reveal>
           </div>
-          <Reveal delay={0.1}><ArrowLink to="/projects">All projects</ArrowLink></Reveal>
+          <Reveal delay={0.1}><ArrowLink to="/sectors">All sectors</ArrowLink></Reveal>
         </div>
         <div className="mt-14 grid grid-cols-1 gap-px overflow-hidden rounded-lg border border-line bg-line sm:grid-cols-2 lg:grid-cols-3">
           {SECTORS.map((s, i) => (
@@ -208,7 +309,7 @@ function CTA() {
   return (
     <section className="px-6 py-20 md:px-10 md:py-28">
       <div className="mx-auto max-w-content">
-        <Reveal><Eyebrow className="mb-6">Work with us</Eyebrow></Reveal>
+        <Reveal><Eyebrow className="mb-6">Let's talk</Eyebrow></Reveal>
         <Reveal delay={0.05}>
           <h2 className="t-h2 max-w-3xl text-ink">If you're solving a problem that matters, let's talk.</h2>
         </Reveal>
@@ -217,8 +318,8 @@ function CTA() {
             We take on a small number of engagements at a time so the work gets our full attention. Tell us what you're trying to build.
           </p>
           <div className="mt-9 flex flex-wrap items-center gap-4">
-            <PrimaryCTA>Work With Us</PrimaryCTA>
-            <GhostCTA to="/projects">View Projects</GhostCTA>
+            <PrimaryCTA>Let's Talk</PrimaryCTA>
+            <GhostCTA to="/sectors">View Sectors</GhostCTA>
           </div>
         </Reveal>
       </div>
@@ -229,12 +330,14 @@ function CTA() {
 export default function Home() {
   return (
     <main>
+      <NewsTicker />
       <Hero />
       <Ventures />
       <Pillars />
       <Build />
       <Work />
       <AboutPreview />
+      <Testimonials />
       <CTA />
     </main>
   )
