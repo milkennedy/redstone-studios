@@ -31,7 +31,7 @@ export default function Footer() {
           </div>
           <div>
             <h4 className="label mb-5 text-paperMut">Navigate</h4>
-            {[['Home', '/'], ['Sectors', '/sectors'], ['About', '/about'], ['News', '/news'], ['Contact', '/contact']].map(([t, to]) => (
+            {[['Home', '/'], ['About', '/about'], ['News', '/news'], ['Sectors', '/sectors'], ['Contact', '/contact']].map(([t, to]) => (
               <Link key={to} to={to} className="mb-3 block w-fit text-[0.95rem] text-paperMut transition-colors hover:text-paper">{t}</Link>
             ))}
           </div>

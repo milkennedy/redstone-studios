@@ -5,9 +5,9 @@ import { Menu, X } from 'lucide-react'
 import { Logo, CAL, EASE } from './ui.jsx'
 
 const links = [
-  { to: '/sectors', label: 'Sectors' },
   { to: '/about', label: 'About' },
   { to: '/news', label: 'News' },
+  { to: '/sectors', label: 'Sectors' },
   { to: '/contact', label: 'Contact' },
 ]
 
